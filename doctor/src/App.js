@@ -6,11 +6,8 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import axios from 'axios';
-import {
-  Table,
+import Table, {
   TableBody,
-  TableHeader,
-  TableHeaderColumn,
   TableRow,
   TableRowColumn,
   TableCell,
@@ -23,7 +20,7 @@ var styles = {
             "backgroundColor": "#FC0909",
         },
     "paperStyle": {
-            "height": "1000px",
+            "height": "3000px",
             "width": "1000px",
             "marginLeft": "200px",
             "marginTop": "30px",
@@ -33,6 +30,7 @@ var styles = {
         },
     "textFieldStyle": {
             "marginTop": "30px",
+            "borderBottom": "3px solid red",
         },
     "buttonStyle": {
             "backgroundColor": "#FC0909",
@@ -47,8 +45,8 @@ class App extends React.Component {
         super();
         this.state = {
             "patientEmail": "",
-            "outputTable": [""]
-        }
+            "outputTable": [],
+        };
     }
 
     onTextFieldChange = (event) => {
@@ -59,9 +57,9 @@ class App extends React.Component {
         var url_str = "http://0.0.0.0:5000/api/heart_rate/get_data/"
         var txtField_str = this.state.patientEmail
         var url_full = url_str.concat(txtField_str)
+        var allData = []
         axios.get(url_full).then( (response) => {
             console.log(response);
-            const allData = [];
             for (let i=0; i < response.data.time_stamp.length; i++) {
                 allData.push({
                     "times": response.data.time_stamp[i],
@@ -70,14 +68,7 @@ class App extends React.Component {
             }
             console.log(allData)
             this.setState({"outputTable": allData});
-            var dataTable = this.state.outputTable.map((e) => {
-                return(
-                    <TableRow>
-                        <TableCell>{e.times}</TableCell>
-                        <TableCell>{e.rates}</TableCell>
-                    </TableRow>
-                )
-            });
+            console.log(this.state.outputTable)
         })
     }
 
@@ -93,7 +84,7 @@ class App extends React.Component {
                 </Typography>
             </Toolbar>
         </AppBar>
-        <Paper position="static" style={styles.paperStyle} zDepth={50}>
+        <Paper position="static" style={styles.paperStyle}>
             <div>
             Welcome, Doctor
             </div>
@@ -110,14 +101,19 @@ class App extends React.Component {
             </Button>
             <div>
             <Table>
-                <TableHeader>
                     <TableRow>
-                        <TableHeaderColumn>Time Stamp</TableHeaderColumn>
-                        <TableHeaderColumn>Heart Rate (bpm)</TableHeaderColumn>
+                        <TableCell>Time Stamp &#128336;</TableCell>
+                        <TableCell>Heart Rate &#9825;</TableCell>
                     </TableRow>
-                </TableHeader>
                 <TableBody>
-                    {this.state.dataTable}
+                 {this.state.outputTable.map(n =>{
+                     return(
+                         <TableRow>
+                            <TableCell>{n.times}</TableCell>
+                            <TableCell>{n.rates}</TableCell>
+                        </TableRow>
+                    );
+                 })}
                 </TableBody>
             </Table>
             </div>
