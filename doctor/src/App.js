@@ -6,6 +6,14 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import axios from 'axios';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 
 var styles = {
@@ -38,7 +46,7 @@ class App extends React.Component {
         super();
         this.state = {
             "patientEmail": "",
-            "outputTable": [null]
+            "outputTable": []
         }
     }
 
@@ -60,10 +68,12 @@ class App extends React.Component {
                 });
             }
             console.log(allData)
-            this.setState({"ouputTable": allData});
-            console.log(this.state.outputTable)
+            this.setState({"outputTable": allData});
+            console.log(this.state.outputTable);
         })
     }
+
+
 
   render() {
     return (
@@ -77,10 +87,10 @@ class App extends React.Component {
         </AppBar>
         <Paper position="static" style={styles.paperStyle} zDepth={50}>
             <div>
-            Welcome Doctor.
+            Welcome, Doctor
             </div>
             <div>
-            Please input patient email below.
+            Please input patient email below
             </div>
             <TextField style={styles.textFieldStyle}
                 value={this.state.txtEmail}
@@ -91,7 +101,6 @@ class App extends React.Component {
                 Search
             </Button>
             <div>
-                {this.state.outputTable}
             </div>
             </div>
         </Paper>
