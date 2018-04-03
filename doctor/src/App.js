@@ -13,6 +13,7 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
+  TableCell,
 } from 'material-ui/Table';
 
 
@@ -46,7 +47,7 @@ class App extends React.Component {
         super();
         this.state = {
             "patientEmail": "",
-            "outputTable": []
+            "outputTable": [""]
         }
     }
 
@@ -69,7 +70,14 @@ class App extends React.Component {
             }
             console.log(allData)
             this.setState({"outputTable": allData});
-            console.log(this.state.outputTable);
+            var dataTable = this.state.outputTable.map((e) => {
+                return(
+                    <TableRow>
+                        <TableCell>{e.times}</TableCell>
+                        <TableCell>{e.rates}</TableCell>
+                    </TableRow>
+                )
+            });
         })
     }
 
@@ -101,6 +109,17 @@ class App extends React.Component {
                 Search
             </Button>
             <div>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderColumn>Time Stamp</TableHeaderColumn>
+                        <TableHeaderColumn>Heart Rate (bpm)</TableHeaderColumn>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {this.state.dataTable}
+                </TableBody>
+            </Table>
             </div>
             </div>
         </Paper>
