@@ -42,12 +42,6 @@ var styles = {
         }
 }
 
-const emails = [
-    'pcg@duke.edu',
-    'pcg15@duke.edu',
-    'suyashkumar@suyashkumar.com'
-];
-
 class App extends React.Component {
     constructor() {
         super();
@@ -115,11 +109,11 @@ class App extends React.Component {
                         <TableCell>Heart Rate &#10084;</TableCell>
                     </TableRow>
                 <TableBody>
-                 {this.state.outputTable.map(n =>{
+                 {this.state.outputTable.map(e =>{
                      return(
                          <TableRow>
-                            <TableCell>{n.times}</TableCell>
-                            <TableCell>{n.rates}</TableCell>
+                            <TableCell>{e.times}</TableCell>
+                            <TableCell>{e.rates}</TableCell>
                         </TableRow>
                     );
                  })}
