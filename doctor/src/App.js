@@ -15,6 +15,9 @@ import Table, {
 
 
 var styles = {
+    "backgroundStyle": {
+            "backgroundColor": "#F1F1F1",
+    },
     "appBarStyle": {
             "marginBottom": "10px",
             "backgroundColor": "#FC0909",
@@ -39,6 +42,11 @@ var styles = {
         }
 }
 
+const emails = [
+    'pcg@duke.edu',
+    'pcg15@duke.edu',
+    'suyashkumar@suyashkumar.com'
+];
 
 class App extends React.Component {
     constructor() {
@@ -77,10 +85,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
+      <body style={styles.backgroundStyle}>
         <AppBar position="static" style={styles.appBarStyle}>
             <Toolbar>
                 <Typography variant="title" color="inherit">
-                    Doctor Viewer
+                    Physician Heart Rate Viewer
                 </Typography>
             </Toolbar>
         </AppBar>
@@ -103,7 +112,7 @@ class App extends React.Component {
             <Table>
                     <TableRow>
                         <TableCell>Time Stamp &#128336;</TableCell>
-                        <TableCell>Heart Rate &#9825;</TableCell>
+                        <TableCell>Heart Rate &#10084;</TableCell>
                     </TableRow>
                 <TableBody>
                  {this.state.outputTable.map(n =>{
@@ -119,6 +128,7 @@ class App extends React.Component {
             </div>
             </div>
         </Paper>
+      </body>
       </div>
     );
   }
