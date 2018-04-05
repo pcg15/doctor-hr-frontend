@@ -9,7 +9,6 @@ import axios from 'axios';
 import Table, {
   TableBody,
   TableRow,
-  TableRowColumn,
   TableCell,
 } from 'material-ui/Table';
 
@@ -56,11 +55,11 @@ class App extends React.Component {
     }
 
     getData = () => {
-        var url_str = "http://0.0.0.0:5000/api/heart_rate/get_data/"
-        var txtField_str = this.state.patientEmail
-        var url_full = url_str.concat(txtField_str)
+        var urlString = "http://vcm-3569.vm.duke.edu:5000/api/heart_rate/get_data/"
+        var txtFieldStr = this.state.patientEmail
+        var urlFull = urlString.concat(txtFieldStr)
         var allData = []
-        axios.get(url_full).then( (response) => {
+        axios.get(urlFull).then( (response) => {
             console.log(response);
             for (let i=0; i < response.data.time_stamp.length; i++) {
                 allData.push({
@@ -70,10 +69,8 @@ class App extends React.Component {
             }
             console.log(allData)
             this.setState({"outputTable": allData});
-            console.log(this.state.outputTable)
         })
     }
-
 
 
   render() {
@@ -89,13 +86,19 @@ class App extends React.Component {
         </AppBar>
         <Paper position="static" style={styles.paperStyle}>
             <div>
-            Welcome, Doctor
-            </div>
+                <font size="6" font face="arial" color="black">
+                    &#x2695;<b>Welcome, Doctor</b>&#x2695;
+                </font>
+            <br></br>
+            <br></br>
             <div>
-            Please input patient email below
+                <font size="3" font face="arial" color="black">
+                    Please input patient email below
+                </font>
+            </div>
             </div>
             <TextField style={styles.textFieldStyle}
-                value={this.state.txtEmail}
+                value={this.state.patientEmail}
                 onChange={this.onTextFieldChange}/>
             <div>
             <Button variant="raised" style={styles.buttonStyle}
@@ -105,8 +108,8 @@ class App extends React.Component {
             <div>
             <Table>
                     <TableRow>
-                        <TableCell>Time Stamp &#128336;</TableCell>
-                        <TableCell>Heart Rate &#10084;</TableCell>
+                        <TableCell><b>Time Stamp</b> &#128336;</TableCell>
+                        <TableCell><b>Heart Rate</b> &#10084;</TableCell>
                     </TableRow>
                 <TableBody>
                  {this.state.outputTable.map(e =>{
@@ -114,7 +117,7 @@ class App extends React.Component {
                          <TableRow>
                             <TableCell>{e.times}</TableCell>
                             <TableCell>{e.rates}</TableCell>
-                        </TableRow>
+                         </TableRow>
                     );
                  })}
                 </TableBody>
