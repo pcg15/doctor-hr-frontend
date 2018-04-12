@@ -1,7 +1,7 @@
 # doctor-hr-frontend
 
 ### ABOUT
-This repo contains a frontend REACT program. The program contains a text field that allows the user to input the email of their patient and press a SEARCH button that makes a GET request to a server to obtain that particular patient's heart rate data stored in a user database. The information that is retrieved from the database is returned to the app by the server and is displayed as a table showing all recorded patient heart rates listed next to their corresponding time stamps. 
+This repo contains a frontend ReactJS program that allows a user to access patient heart rate information from a pre-existing database. The app contains a text field that allows the user to input the email of their patient and press a SEARCH button that makes a GET request to a server to obtain that particular patient's heart rate data stored in the database. The information that is retrieved from the database is returned to the app by the server and is displayed as a table showing all recorded patient heart rates listed next to their corresponding time stamps. The screenshot below shows the app being used access a particular patient's heart rate information and the tabular output of the GET request for that patient.
 
 ![image text](https://user-images.githubusercontent.com/24235476/38650535-69999f34-3dca-11e8-9461-4048e7d7707e.png)
 
