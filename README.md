@@ -8,4 +8,8 @@ This repo contains a frontend REACT program. The program contains a text field t
 ### GETTING STARTED
 To get full functionality out of this program, first you will need to setup the corresponding server as described [here](https://github.com/pcg15/heart_rate_databases_introduction). 
 
-After the server is up and running, you will need to keep the server and database running in separate screens as you clone this repository onto your machine. Make sure you are within the `doctor` directory before continuing further. Run ```npm install``` to install any dependencies, and then you can run ```npm start``` to launch the app. The app can be used from within your browser to access patient heart rates found within the database.
+After the server is up and running, you will need to keep the server and database running in separate screens as you clone this repository onto your machine. Make sure you are within the `doctor` directory before continuing further. Run 
+```npm install``` 
+to install any dependencies, and then you can run 
+```npm start``` 
+to launch the app. The app can be used from within your browser to access any patient heart rate information found within the database.
