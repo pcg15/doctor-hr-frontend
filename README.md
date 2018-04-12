@@ -12,7 +12,7 @@ After the server is up and running, you will need to keep the server and databas
 ```
 cd doctor
 ```
-Run 
+Make sure you have Node.JS installed on your machine. Use this [link](https://nodejs.org/en/) to install it if you haven't already. Run 
 ```
 npm install
 ``` 
